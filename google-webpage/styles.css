@@ -1,0 +1,10 @@
+body {
+    font-family: Arial, sans-serif;
+}
+ul {
+    list-style-type: none;
+}
+
+#search {
+    text-align: center;
+}

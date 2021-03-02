@@ -1,0 +1,61 @@
+body {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+main {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    max-width: 700px;
+    width: 100%;
+    align-items: center;
+}
+
+h2 {
+    font-size: 50px;
+}
+
+div {
+    margin: 25px;
+    padding: 10px;
+}
+
+button {
+    cursor: pointer;
+}
+
+.view-flashcard {
+    padding: 75px;
+    font-size: 20px;
+    width: 400px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.new-card {
+    display: flex;
+    gap: 5px;
+}
+
+.flashcard-front {
+    border: 0.15rem solid purple;
+    background-color: lavender;
+}
+
+.flashcard-back {
+    border: 0.15rem solid blue;
+    background-color: rgb(230, 230, 240);
+}
+
+table, th, td {
+    border: .1rem solid black;
+    border-collapse: collapse;
+    padding: 5px 10px;
+    text-align: left;
+}
+
+.viewFlashcard-buttons {
+    display: flex;
+    gap: 15px;
+}

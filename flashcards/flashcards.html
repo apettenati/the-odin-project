@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Flashcards</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+
+        class CardViewer extends React.Component {
+
+            constructor(props) {
+                super(props)
+                this.state = {
+                    currentFlashcard: 0,
+                    flashcardFrontSide: true,
+                }
+            }
+
+            learnFlashcard = () => {
+                this.setState(state => ({
+                    learned:!state.learned
+                }))
+            }
+
+            flipFlashcard = () => {
+                this.setState(state => ({
+                    flashcardFrontSide: !state.flashcardFrontSide
+                }))
+                console.log('state', this.state.flashcardFrontSide)
+            }
+
+
+            nextFlashcard = () => {
+                this.setState(state => {
+                    if (state.currentFlashcard + 1 >= this.props.flashcards.length) {
+                        return { currentFlashcard: 0 }
+                    } else {
+                        return { currentFlashcard: state.currentFlashcard + 1 }
+                    }
+                })
+            }
+
+            render() {
+                return (
+                    <main>
+                        <h1>Card Viewer</h1>
+                        <div
+                            className={this.state.flashcardFrontSide ? 'view-flashcard flashcard-front' : 'view-flashcard flashcard-back'}
+                            onClick={this.flipFlashcard}
+                        >
+                            {this.state.flashcardFrontSide ?
+                                this.props.flashcards[this.state.currentFlashcard].front :
+                                this.props.flashcards[this.state.currentFlashcard].back
+                            }
+                        </div>
+                        <div className="viewFlashcard-buttons">
+                            <button onClick={this.nextFlashcard}>Next Card</button>
+                            <button onClick={this.learnFlashcard}>Learn Card</button>
+                        </div>
+                        <button onClick={this.props.changeView}>Go to Card Editor</button>
+                    </main>
+                )
+            }
+
+        }
+
+
+        class CardEditor extends React.Component {
+
+            constructor(props) {
+                super(props)
+                this.state = {
+                    front: "",
+                    back: ""
+                }
+            }
+
+            handleChange = (event) => {
+                this.setState({
+                    [event.target.name]: event.target.value
+
+                })
+            }
+
+            addFlashcard = () => {
+                this.props.addFlashcard(this.state.front, this.state.back)
+                this.setState({
+                    front: "",
+                    back: ""
+                })
+            }
+
+            deleteFlashcard = (event) => {
+                this.props.deleteFlashcard(event.target.dataset.index)
+            }
+
+            render() {
+                const rows = this.props.flashcards.map((card, i) => {
+                    return (
+                        <tr key={i}>
+                            <th>{card.front}</th>
+                            <th>{card.back}</th>
+                            <th><button data-index={i} onClick={this.deleteFlashcard}>Delete</button></th>
+                        </tr>
+                    )
+                })
+                return (
+                    <main>
+                        <h1>Card Editor</h1>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Front</td>
+                                    <td>Back</td>
+                                    <td>Delete</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {rows}
+                            </tbody>
+                        </table>
+                        <br />
+                        <div className="new-card">
+                            <input onChange={this.handleChange} name="front" value={this.state.front} placeholder="Front of Card"></input>
+                            <input onChange={this.handleChange} name="back" value={this.state.back} placeholder="Back of Card"></input>
+                            <button onClick={this.addFlashcard}>Add Card</button>
+                        </div>
+                        <button onClick={this.props.changeView}>Go to Card Viewer</button>
+                    </main>
+                )
+            }
+
+        }
+
+
+        class App extends React.Component {
+
+            constructor(props) {
+                super(props);
+                this.state = {
+                    editorView: false,
+                    flashcards: [
+                        { front: "test front 1", back: "test back 1" },
+                        { front: "test front 2", back: "test back 2" }
+                    ]
+
+                }
+            }
+
+            addFlashcard = (front, back) => {
+                this.setState(state => ({
+                    flashcards: [...state.flashcards, { front, back }],
+                }))
+            }
+
+            deleteFlashcard = (index) => {
+                this.setState(state => {
+                    const flashcards = [...state.flashcards]
+                    flashcards.splice(index, 1)
+                    return { flashcards }
+                })
+            }
+
+            changeView = () => {
+                this.setState(state => ({
+                    editorView: !state.editorView
+                }))
+            }
+
+            render() {
+                if (this.state.editorView === true) {
+                    return (
+                        <CardEditor
+                            changeView={this.changeView}
+                            flashcards={this.state.flashcards}
+                            addFlashcard={this.addFlashcard}
+                            deleteFlashcard={this.deleteFlashcard}
+                        />
+                    )
+
+                } else {
+                    return (
+                        <CardViewer
+                            changeView={this.changeView}
+                            flashcards={this.state.flashcards}
+                        />
+                    )
+                }
+            }
+        }
+
+        ReactDOM.render(<App />, document.querySelector("#app"));
+
+    </script>
+</body>
+
+</html>

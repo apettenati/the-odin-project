@@ -1,2 +1,4 @@
-CS50-beyond-javascript1
+/CS50-beyond-javascript
 .vscode
+*.code-workspace
+/javascript-exercises

@@ -1,24 +1,23 @@
 window.addEventListener('keydown', (event) => {
+  const key = document.querySelector(`.key[data-key="${event.key}"]`)
+
+  if (!key) return
+
   // play audio
-  const audio = document.querySelector(`audio[data-key="${event.key}"]`)
-  if (audio) {
-    audio.currentTime = 0 // rewind to the start of the sound so they can play in succession
-    audio.play()
-  } else return
+  const audio = key.querySelector('audio')
+  audio.currentTime = 0 // rewind to the start of the sound so they can play in succession
+  audio.play()
 
   // show animation when sound is playing
-  const key = document.querySelector(`.key[data-key="${event.key}"]`)
   key.classList.add('playing')
 })
 
 // remove animation once transition ends
 const keys = document.querySelectorAll('.key')
 keys.forEach((key) => {
-  key.addEventListener('transitionend', removeTransition)
-})
+  key.addEventListener('transitionend', (event) => {
+    if (event.propertyName !== 'transform') return
 
-function removeTransition (event) {
-  if (event.propertyName === 'transform') {
-    this.classList.remove('playing')
-  }
-}
+    key.classList.remove('playing')
+  })
+})

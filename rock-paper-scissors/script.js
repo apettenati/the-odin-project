@@ -1,5 +1,4 @@
-const playButton = document.querySelector('#play')
-playButton.addEventListener('click', playGame)
+const buttons = document.querySelectorAll('button')
 
 function computerSelection () {
   const choices = ['rock', 'paper', 'scissors']
@@ -7,29 +6,35 @@ function computerSelection () {
 }
 
 function checkWinner (playerSelection, compSelection) {
-  let text = ''
+  let result = ''
   if (playerSelection === compSelection) {
-    text = 'Tie!'
+    result = 'Tie!'
   } else if (playerSelection === 'rock' && compSelection === 'scissors') {
-    text = 'You won!'
+    result = 'You won!'
   } else if (playerSelection === 'paper' && compSelection === 'rock') {
-    text = 'You won!'
+    result = 'You won!'
   } else if (playerSelection === 'scissors' && compSelection === 'paper') {
-    text = 'You won!'
+    result = 'You won!'
   } else {
-    text = 'You lost!'
+    result = 'You lost!'
   }
-
-  return text
+  return result
 }
 
-function generateWinnerText (text) {
+function generateWinnerText (result) {
   const winner = document.querySelector('.winner')
-  winner.innerText = text
+  winner.innerText = result
 }
-function playGame (event) {
-  const playerSelection = document.querySelector('#player-selection').value
+
+function playGame (playerSelection) {
   const compSelection = computerSelection()
   const text = checkWinner(playerSelection, compSelection)
   generateWinnerText(text)
 }
+
+buttons.forEach((button) => {
+  button.addEventListener('click', () => {
+    const playerSelection = button.firstChild.alt
+    playGame(playerSelection)
+  })
+})

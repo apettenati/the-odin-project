@@ -2,24 +2,24 @@
 <html>
 
 <head>
+  <link rel="stylesheet" href="/static/style.css">
   <title>Rock Paper Scissors</title>
 </head>
 
 <body>
+  <main>
   <h1>Rock Paper Scissors</h1>
   <div class="player-selection">
-    <label for="player-selection">Pick an option:</label>
-    <select name="player-selection" id="player-selection">
-      <option value="rock">Rock</option>
-      <option value="paper">Paper</option>
-      <option value="scissors">Scissors</option>
-    </select>
-    <input type="submit" value="Play" id="play" />
+    <button><img src="static/images/rock.png" alt="rock"></button>
+    <button><img src="static/images/paper.png" alt="paper"></button>
+    <button><img src="static/images/scissors.png" alt="scissors"></button>
   </div>
-  <div">
+  <br>
+  <div>
     <p class="computer-selection"></p>
     <p class="winner"></p>
-    </div>
+  </div>
+  </main>
 </body>
 <script src="script.js"></script>
 

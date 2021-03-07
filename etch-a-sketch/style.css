@@ -1,0 +1,55 @@
+body {
+  background-image: url("https://files.1-background.com/images/nature/images/wood-maple-background-repeat.jpg");
+  background-repeat: repeat;
+  display: flex;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  background-color: red;
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-rows: 1fr 4fr 1fr;
+  grid-template-areas: 
+  ". header . "
+  ". sketch-grid ."
+  "pen-btn . clear-btn";
+  justify-content: center;
+  padding: 20px;
+  border-radius: 5%;
+  height: 70vh;
+  width: 50vw;
+}
+
+h1 {
+  grid-area: header;
+  color: gold;
+  text-align: center;
+
+}
+
+button {
+  background-color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 5px 5px 5px grey;
+}
+.pen-size {
+  grid-area: pen-btn;
+
+}
+
+.clear-screen {
+  grid-area: clear-btn;
+
+}
+
+.sketch-grid {
+  grid-area: sketch-grid;
+  background-color: gray;
+  border-radius: 5%;
+}

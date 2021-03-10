@@ -1,55 +1,183 @@
 body {
-  background-image: url("https://files.1-background.com/images/nature/images/wood-maple-background-repeat.jpg");
-  background-repeat: repeat;
-  display: flex;
-  height: 100vh;
-  padding: 0;
-  margin: 0;
-  justify-content: center;
-  align-items: center;
+    background-image: url("https://files.1-background.com/images/nature/images/wood-maple-background-repeat.jpg");
+    background-repeat: repeat;
+    display: flex;
+    height: 100vh;
+    padding: 0;
+    margin: 0 20px;
+    justify-content: center;
+    align-items: center;
 }
 
 main {
-  background-color: red;
-  display: grid;
-  grid-template-columns: 1fr 4fr 1fr;
-  grid-template-rows: 1fr 4fr 1fr;
-  grid-template-areas: 
-  ". header . "
-  ". sketch-grid ."
-  "pen-btn . clear-btn";
-  justify-content: center;
-  padding: 20px;
-  border-radius: 5%;
-  height: 70vh;
-  width: 50vw;
+    background-color: red;
+    display: grid;
+    grid-template-columns: 1fr 6fr 1fr;
+    grid-template-rows: 1fr 5fr 1fr;
+    grid-template-areas: ". header . " ". sketch-grid ." "size-btn slider clear-btn";
+    justify-content: center;
+    padding: 10px;
+    border-radius: 2%;
+    border: 20px outset rgba(207, 2, 2, 0.322);
+    height: 800px;
+    width: 1100px;
+    box-shadow: 10px 10px 5px rgb(66, 51, 51);
 }
 
 h1 {
-  grid-area: header;
-  color: gold;
-  text-align: center;
-
+    margin: 0;
+    grid-area: header;
+    font-family: 'Arizonia', cursive;
+    font-size: 90px;
+    color: #fcc200;
+    display: flex;
+    cursor: default; 
+    justify-content: center;
+    align-items: center;
+    text-shadow: 2px 2px 1px #6e5500; 
 }
 
 button {
-  background-color: white;
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: 5px 5px 5px grey;
-}
-.pen-size {
-  grid-area: pen-btn;
+    margin: 10px;
+    border: 10px inset rgba(211, 211, 211, 0.171);
+    box-shadow: 5px 5px 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-family: 'Rubik Mono One', sans-serif;
+    color: rgb(99, 99, 99);
 
 }
 
-.clear-screen {
-  grid-area: clear-btn;
+.size {
+    grid-area: size-btn;
+}
 
+.clear {
+    grid-area: clear-btn;
 }
 
 .sketch-grid {
-  grid-area: sketch-grid;
-  background-color: gray;
-  border-radius: 5%;
+    grid-area: sketch-grid;
+    background-color: lightgray;
+    border-radius: 2%;
+    cursor: crosshair;
+    border: 15px inset #FF0000;
+    display: grid;
+}
+
+.small {
+  grid-template-columns: repeat(60, 1fr);
+  grid-template-rows: repeat(60, 1fr);
+}
+
+.medium {
+  grid-template-columns: repeat(30, 1fr);
+  grid-template-rows: repeat(30, 1fr);
+}
+
+.large {
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+}
+
+.purple {
+    background-color: #AD0CE8;    
+}
+
+.red {
+    background-color: #FF0000;    
+}
+
+.orange {
+    background-color: #E86C0C;    
+}
+
+.green {
+    background-color: #96CA2D;    
+}
+
+.blue {
+    background-color: #1224FF;    
+}
+
+button:hover {
+    background-color: lightgrey;
+}
+
+@media (max-width: 900px) {
+    h1 {
+        font-size: 45px;
+    }
+}
+
+.slider {
+    grid-area: slider;
+    width: 30%;
+    justify-self: center;
+    align-self: center;
+    background-color: white;
+    height: 8px;
+    border-radius: 5px;
+    box-shadow: inset 2px 2px 3px lightgray;
+}
+
+.purple.slider::-moz-range-thumb {
+    background-color: #AD0CE8;
+    border: solid white 2px;
+    cursor: grab;
+}
+
+.purple.slider::-moz-range-thumb:active {
+    background-color: #AD0CE8;
+    border: solid white 2px;
+    cursor: grab;
+}
+
+
+.red.slider::-moz-range-thumb {
+    background-color: #FF0000;
+    border: solid white 2px;
+    cursor: grab;
+}
+
+.red.slider::-moz-range-thumb:active {
+    background-color: #FF0000;
+    border: solid white 2px;
+    cursor: grabbing;
+}
+
+.orange.slider::-moz-range-thumb {
+    background-color: #E86C0C;
+    border: solid white 2px;
+    cursor: grab;
+}
+
+.orange.slider::-moz-range-thumb:active {
+    background-color: #E86C0C;
+    border: solid white 2px;
+    cursor: grabbing;
+}
+
+.green.slider::-moz-range-thumb {
+    background-color: #96CA2D;
+    border: solid white 2px;
+    cursor: grab;
+}
+
+.green.slider::-moz-range-thumb:active {
+    background-color: #96CA2D;
+    border: solid white 2px;
+    cursor: grabbing;
+}
+
+.blue.slider::-moz-range-thumb {
+    background-color: #1224FF;
+    border: solid white 2px;
+    cursor: grab;
+}
+
+.blue.slider::-moz-range-thumb:active {
+    background-color: #1224FF;
+    border: solid white 2px;
+    cursor: grabbing;
 }

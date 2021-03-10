@@ -6,15 +6,18 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+ <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Arizonia&family=Rubik+Mono+One&display=swap" rel="stylesheet"> 
   <title>Etch-A-Sketch</title>
 </head>
 
 <body>
   <main>
-      <h1>Etch-A-Sketch</h1>
-      <div class="sketch-grid"></div>
-      <button class="pen-size">Pen Size</button>
-      <button class="clear-screen">Clear Screen</button>
+    <h1>Etch-A-Sketch</h1>
+    <div class="sketch-grid"></div>
+    <button class="size" name="small"></button>
+      <input type="range" min="1" max="5" value="3" class="slider">
+    <button class="clear">Clear</button>
   </main>
 
   <script src="scripts.js"></script>

@@ -84,23 +84,23 @@ button:hover {
     background-color: #1e8fff1e;
 }
 
-.purple, .purple::-moz-range-thumb, .purple::-webkit-slider-thumb {
+.purple {
     background-color: #AD0CE8;
 }
 
-.red, .red::-moz-range-thumb, .red::-webkit-slider-thumb {
+.red {
     background-color: #FF0000;
 }
 
-.orange, .orange::-moz-range-thumb, .orange::-webkit-slider-thumb {
+.orange {
     background-color: #E86C0C;
 }
 
-.green, .green::-moz-range-thumb, .green::-webkit-slider-thumb {
+.green {
     background-color: #96CA2D;
 }
 
-.blue, .blue::-moz-range-thumb, .blue::-webkit-slider-thumb {
+.blue {
     background-color: #1224FF;
 }
 
@@ -115,7 +115,12 @@ button:hover {
     box-shadow: inset 2px 2px 3px lightgray;
 }
 
-.slider::-moz-range-thumb, .slider::-webkit-slider-thumb {
+.slider::-moz-range-thumb {
+    border: solid white 2px;
+    cursor: grab;
+}
+
+.slider::-webkit-slider-thumb {
     border: solid white 2px;
     cursor: grab;
 }
@@ -126,4 +131,44 @@ button:hover {
 
 .slider::-webkit-slider-thumb:active {
     cursor: grabbing;
+}
+
+.purple::-webkit-slider-thumb {
+    background-color: #AD0CE8;
+}
+
+.red::-webkit-slider-thumb {
+    background-color: #FF0000;
+}
+
+.orange::-webkit-slider-thumb {
+    background-color: #E86C0C;
+}
+
+.green::-webkit-slider-thumb {
+    background-color: #96CA2D;
+}
+
+.blue::-webkit-slider-thumb {
+    background-color: #1224FF;
+}
+
+.purple::-moz-range-thumb {
+    background-color: #AD0CE8;
+}
+
+.red::-moz-range-thumb {
+    background-color: #FF0000;
+}
+
+.orange::-moz-range-thumb {
+    background-color: #E86C0C;
+}
+
+.green::-moz-range-thumb {
+    background-color: #96CA2D;
+}
+
+.blue::-moz-range-thumb {
+    background-color: #1224FF;
 }

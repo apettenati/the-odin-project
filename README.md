@@ -1,5 +1,7 @@
 This repo contains all the projects I completed while learning web development, primarily from The Odin Project
 
+---
+
 ###### [Rock Paper Scissors- The Odin Project](https://apettenati.github.io/the-odin-project/rock-paper-scissors/game.html)
 - First javascript project with minimal CSS
 

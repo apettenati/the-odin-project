@@ -3,6 +3,11 @@ const answerScreen = document.querySelector('.answer')
 const buttons = document.querySelectorAll('button')
 
 window.addEventListener('keydown', (event) => {
+  // clear screen first if error is showing
+  if (answerScreen.innerText === 'Invalid expression' || answerScreen.innerText === 'Overflow') {
+    answerScreen.innerText = 0
+  }
+  // add keyboard press functionality
   if (event.key === 'Escape') {
     clearScreen()
   } else if (event.key === 'Backspace') {
@@ -35,25 +40,6 @@ buttons.forEach((button) => {
   })
 })
 
-function doThingFunc (foo) {
-  console.log(foo)
-}
-
-function foo () {
-  const foo = 3
-
-  function doThing () {
-    doThingFunc(foo)
-  }
-
-  return {
-    doThing: doThing
-  }
-}
-
-const fooInstance = foo()
-console.log(fooInstance)
-
 function calculate () {
   try {
     // evaluate expression typed into answer
@@ -72,10 +58,16 @@ function clearScreen () {
 }
 
 function updateAnswer (button) {
+  // clear text from screen if 0 or error
   if (answerScreen.innerText === '0' ||
     answerScreen.innerText === 'Invalid expression') {
     answerScreen.innerText = button.name
+  // otherwise append to existing screen text
   } else {
     answerScreen.innerText += button.name
+  }
+  // throw overflow error if string length exceeds screen size
+  if (answerScreen.innerText.length > 18) {
+    answerScreen.innerText = 'Overflow'
   }
 }

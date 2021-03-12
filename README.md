@@ -8,6 +8,8 @@ This repo contains all the projects I completed while learning web development, 
 
 [Etch-A-Sketch](https://apettenati.github.io/the-odin-project/etch-a-sketch/index.html)
 
+[Calculator](https://apettenati.github.io/the-odin-project/calculator/index.html)
+
 ### [CS50 Beyond](https://cs50.harvard.edu/beyond/2019/)
 
 [Quiz Application](https://apettenati.github.io/the-odin-project/quiz/quiz.html)

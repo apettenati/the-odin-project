@@ -2,10 +2,11 @@
   --color-background: #293462;
   --color-buttons: #216583;
   --color-clear: #f76262;
-  --color-screen: #fff1c1;
+  --color-screen: #F5EBCB;
 }
 
 body {
+  background-color: #E9E5D7;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -20,3 +20,6 @@ This repo contains all the projects I completed while learning web development, 
 
 ###### [Calculator](https://apettenati.github.io/the-odin-project/calculator/index.html)
 - Implemented with CSS Grid
+
+##### Mini Message Board
+- First node.js/express app to build a tiny message board. 
